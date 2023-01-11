@@ -21,7 +21,13 @@ data class Shipment(
     val transportType: TransportType? = null,
 
     val temperatureRange: TemperatureRange? = null
-)
+
+
+) {
+    override fun toString(): String {
+        return "Shipment(id=$id, origin=$origin, destination=$destination, customerId=$customerId, createdDate=$createdDate, fragile=$fragile, notifyCustomer=$notifyCustomer, transportType=$transportType, temperatureRange=$temperatureRange)"
+    }
+}
 
 enum class TransportType {
     AIR,
