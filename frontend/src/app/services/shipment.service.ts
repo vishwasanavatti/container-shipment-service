@@ -1,60 +1,33 @@
-import {Shipment, TransportType} from "../models/shipment.mode";
-import {Injectable} from "@angular/core";
+import { Shipment, TransportType } from "../models/shipment.mode";
+import { Injectable, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root',
 })
-export class ShipmentService {
+export class ShipmentService implements OnInit {
 
-    private shipments: Shipment[] = [
-        {
-            id: 562356123,
-            origin: "Frankfurt",
-            destination: "Hamburg",
-            customerId: "512351",
-            createdDate: 1672873600,
-            fragile: true,
-            notifyCustomer: true,
-            transportType: TransportType.AIR,
-            temperatureRange: {
-                id: 1,
-                min: -20,
-                max: -10
-            }
-        },
-        {
-            id: 562356123,
-            origin: "Frankfurt",
-            destination: "Hamburg",
-            customerId: "512351",
-            createdDate: 1672873600,
-            fragile: true,
-            notifyCustomer: true,
-            transportType: TransportType.SEA,
-            temperatureRange: {
-                id: 1,
-                min: -20,
-                max: -10
-            }
-        },
-        {
-            id: 562356123,
-            origin: "Frankfurt",
-            destination: "Hamburg",
-            customerId: "512351",
-            createdDate: 1672873600,
-            fragile: true,
-            notifyCustomer: true,
-            transportType: TransportType.ROAD,
-            temperatureRange: {
-                id: 1,
-                min: -20,
-                max: -10
-            }
-        }
-    ];
+    private url = 'http://localhost:8080';
 
-    getShipments(): Shipment[]{
+    constructor(private httpClient: HttpClient) { }
+
+    ngOnInit(): void {
+        this.httpClient
+            .get(this.url + '/shipments')
+            .subscribe(
+                (response) => {
+                    this.shipments = response as Shipment[];
+                },
+                (error) => {
+                    // Todo
+                    console.log('error - ', error);
+                }
+            );
+    }
+
+    private shipments: Shipment[] = [];
+
+    getShipments(): Shipment[] {
         return this.shipments;
     }
 
