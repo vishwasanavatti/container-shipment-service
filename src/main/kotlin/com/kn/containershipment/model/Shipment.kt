@@ -27,6 +27,14 @@ data class Shipment(
     override fun toString(): String {
         return "Shipment(id=$id, origin=$origin, destination=$destination, customerId=$customerId, createdDate=$createdDate, fragile=$fragile, notifyCustomer=$notifyCustomer, transportType=$transportType, temperatureRange=$temperatureRange)"
     }
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
+    }
 }
 
 enum class TransportType {

@@ -11,11 +11,12 @@ class RabbitReceiver {
 
     private val logger: Logger = Logger.getLogger(RabbitReceiver::class.java.toString())
 
+    val shipments : MutableSet<Shipment> = mutableSetOf()
+
     @RabbitListener(queues = ["rabbitmq"])
     @RabbitHandler
     fun receive(shipment: Shipment) {
-        println("print here")
         logger.info("shipment - $shipment")
-        println(shipment)
+        shipments.add(shipment)
     }
 }
