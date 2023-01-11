@@ -30,3 +30,9 @@ export interface TemperatureRange {
     min: Number,
     max: Number
 }
+
+export interface PlanTemplate {
+    id: Number,
+    name: string,
+    selected: boolean
+}
