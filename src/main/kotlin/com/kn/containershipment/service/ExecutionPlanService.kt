@@ -7,6 +7,9 @@ import com.kn.containershipment.repository.ExecutionPlanRepository
 import org.springframework.stereotype.Service
 import java.lang.IllegalArgumentException
 
+/**
+ * Service class for the {@link ExecutionPlan}
+ */
 @Service
 class ExecutionPlanService(val templateService: TemplateService, val executionPlanRepository: ExecutionPlanRepository) {
 
@@ -15,6 +18,7 @@ class ExecutionPlanService(val templateService: TemplateService, val executionPl
         val templateId = shipmentPlan.templateId
 
         if (shipment == null || templateId == 0L) {
+            // Todo - use Bad request exception
             throw IllegalArgumentException("shipment or template value is incorrect");
         }
 

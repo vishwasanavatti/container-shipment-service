@@ -5,8 +5,16 @@ import com.kn.containershipment.model.TemperatureRange
 import com.kn.containershipment.model.TransportType
 import org.springframework.stereotype.Service
 
+/**
+ * Service class for the {@link Shipment}
+ */
 @Service
 class ShipmentService {
+
+    /**
+     * This method creates custom shipments and returns the list.
+     * This is created as workaround to get the shipments
+     */
     fun getShipments() : Set<Shipment> {
         val shipments: MutableSet<Shipment> = mutableSetOf()
         val temperatureRange = TemperatureRange(id = 1, min = -20, max = -10)

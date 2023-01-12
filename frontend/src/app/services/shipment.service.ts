@@ -7,12 +7,17 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ShipmentService {
 
+    // default host url
     private url = 'http://localhost:8080';
 
     private shipments: Shipment[] = [];
 
     constructor(private httpClient: HttpClient) { }
 
+    /**
+     * Fetch the shipements from the server
+     * @returns Shipment[]
+     */
     fetchShipments(): Promise<Shipment[]> {
         return this.httpClient
             .get<Shipment[]>(this.url + '/shipments').toPromise();

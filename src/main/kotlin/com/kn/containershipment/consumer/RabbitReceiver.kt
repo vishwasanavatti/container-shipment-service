@@ -6,6 +6,11 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.stereotype.Service
 import java.util.logging.Logger
 
+/**
+ * This service is created to listen to the messages from the RabbitMQ
+ *
+ * Issue with the queue name I guess, the connection works fine but not able to receive any messages
+ */
 @Service
 class RabbitReceiver {
 

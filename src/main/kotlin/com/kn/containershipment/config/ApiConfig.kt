@@ -9,7 +9,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
-
+/**
+ * The api config class to configure the cors
+ */
 @Configuration
 class ApiConfig {
     @Bean

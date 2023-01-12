@@ -4,6 +4,9 @@ import com.kn.containershipment.model.PlanTemplate
 import com.kn.containershipment.repository.TemplateRepository
 import org.springframework.stereotype.Service
 
+/**
+ * Service class for the {@link PlanTemplate}
+ */
 @Service
 class TemplateService(val templateRepository: TemplateRepository) {
 

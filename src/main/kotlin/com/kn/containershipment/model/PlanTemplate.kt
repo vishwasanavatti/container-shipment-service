@@ -12,6 +12,7 @@ data class PlanTemplate(
 
     val name: String? = null,
 
+    // List changed to MutableList so we could write to the list
     @OneToMany(targetEntity = Action::class, cascade = [CascadeType.ALL])
     @JoinColumn(name = "pta_fk", referencedColumnName = "id")
     val actions: MutableList<Action> = ArrayList(),

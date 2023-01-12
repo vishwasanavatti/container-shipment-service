@@ -13,6 +13,11 @@ import org.springframework.amqp.support.converter.MessageConverter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
+/**
+ * Configuration class file to setup connection with the RabbitMQ
+ *
+ * TODO - check the queue name as I am not able to receive the messages from the queue
+ */
 @Configuration
 @EnableRabbit
 class RabbitMQConfig {
