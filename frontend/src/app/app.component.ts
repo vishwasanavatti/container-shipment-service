@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Shipment, TransportType } from "./models/shipment.mode";
+import { ExecutionPlan, Shipment, TransportType } from "./models/shipment.mode";
 import { ShipmentService } from "./services/shipment.service";
 
 @Component({
@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
   shipments: Shipment[] = [];
   selectedShipment: Shipment;
+  executionPlan: ExecutionPlan;
 
   constructor(private shipmentService: ShipmentService) {
   }
@@ -27,6 +28,10 @@ export class AppComponent implements OnInit {
     const target = event.target as HTMLInputElement;
     if (target.checked) this.selectedShipment = this.shipments.find(s => s.id === id);
     else this.selectedShipment = null;
+  }
+
+  public setExecutionPlan(executionPlan: ExecutionPlan): void {
+    this.executionPlan = executionPlan;
   }
 
 }

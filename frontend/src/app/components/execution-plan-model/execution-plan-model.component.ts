@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { Shipment, PlanTemplate, TransportType } from "../../models/shipment.mode";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Shipment, PlanTemplate, TransportType, ExecutionPlan } from "../../models/shipment.mode";
 
 @Component({
   selector: 'execution-plan-model',
@@ -12,6 +12,9 @@ export class ExecutionPlanModelComponent implements OnInit {
 
   @Input()
   shipment: Shipment;
+
+  @Output()
+  executionPlan: EventEmitter<ExecutionPlan> = new EventEmitter();
 
   public templates: PlanTemplate[] = [];
 
@@ -62,7 +65,7 @@ export class ExecutionPlanModelComponent implements OnInit {
       .subscribe(
         (response) => {
           // Success
-          console.log(response);
+          this.executionPlan.emit(response as ExecutionPlan);
         },
         (error) => {
           console.log("log", error);

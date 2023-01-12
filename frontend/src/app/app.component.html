@@ -61,7 +61,7 @@
 
 <hr class="vertical-separator" />
 
-<execution-plan-component></execution-plan-component>
+<execution-plan-component [executionPlan]="executionPlan"></execution-plan-component>
 
 
-<execution-plan-model [shipment]="selectedShipment"></execution-plan-model>
+<execution-plan-model [shipment]="selectedShipment" (executionPlan)="setExecutionPlan($event)"></execution-plan-model>

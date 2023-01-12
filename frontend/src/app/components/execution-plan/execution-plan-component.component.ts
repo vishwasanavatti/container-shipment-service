@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ExecutionPlan } from 'src/app/models/shipment.mode';
 
 @Component({
   selector: 'execution-plan-component',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./execution-plan-component.component.scss']
 })
 export class ExecutionPlanComponentComponent implements OnInit {
+
+  @Input()
+  executionPlan: ExecutionPlan;
 
   constructor() { }
 

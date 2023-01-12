@@ -36,3 +36,29 @@ export interface PlanTemplate {
     name: string,
     selected: boolean
 }
+
+export interface ExecutionPlan {
+    id: Number,
+    origin: String,
+
+    destination?: String,
+
+    customerId: String,
+
+    createdDate: Number,
+
+    fragile: Boolean,
+
+    notifyCustomer: Boolean,
+
+    transportType: TransportType,
+    temperatureRange: TemperatureRange,
+    actions: ExecutionPlanAction[]
+}
+
+export interface ExecutionPlanAction {
+    id: number,
+    actionName: String,
+    isExecuted: Boolean,
+    isNotify: Boolean,
+}
