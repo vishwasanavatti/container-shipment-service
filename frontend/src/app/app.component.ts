@@ -23,4 +23,10 @@ export class AppComponent implements OnInit {
     this.shipments = await this.shipmentService.getShipments();
   }
 
+  public onSelect(id: number, event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.checked) this.selectedShipment = this.shipments.find(s => s.id === id);
+    else this.selectedShipment = null;
+  }
+
 }

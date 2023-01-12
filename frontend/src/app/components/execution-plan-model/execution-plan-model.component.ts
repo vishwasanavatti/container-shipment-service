@@ -55,4 +55,20 @@ export class ExecutionPlanModelComponent implements OnInit {
     template.selected = true;
   }
 
+  public onCreate(): void {
+    const payload = { shipment: this.shipment, templateId: this.templates.find(t => t.selected).id };
+    this.httpClient
+      .post(this.url + '/shipment-plan', payload)
+      .subscribe(
+        (response) => {
+          // Success
+          console.log(response);
+        },
+        (error) => {
+          console.log("log", error);
+          // error
+        }
+      );
+  }
+
 }

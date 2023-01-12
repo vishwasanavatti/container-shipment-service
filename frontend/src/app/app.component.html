@@ -38,7 +38,7 @@
                     <tr *ngFor="let shipment of shipments">
                         <td>
                             <span class="custom-checkbox">
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" (change)="onSelect(shipment.id, $event)">
                                 <label></label>
                             </span>
                         </td>
