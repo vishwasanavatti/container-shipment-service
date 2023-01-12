@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Shipment, TransportType} from "./models/shipment.mode";
-import {ShipmentService} from "./services/shipment.service";
+import { Component, OnInit } from '@angular/core';
+import { Shipment, TransportType } from "./models/shipment.mode";
+import { ShipmentService } from "./services/shipment.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   AIR: TransportType = TransportType.AIR;
   ROAD: TransportType = TransportType.ROAD;
@@ -19,9 +19,8 @@ export class AppComponent implements OnInit{
   constructor(private shipmentService: ShipmentService) {
   }
 
-  ngOnInit(): void {
-    this.shipments = this.shipmentService.getShipments();
+  async ngOnInit(): Promise<void> {
+    this.shipments = await this.shipmentService.getShipments();
   }
-
 
 }

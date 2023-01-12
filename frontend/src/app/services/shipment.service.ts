@@ -5,29 +5,21 @@ import { HttpClient } from "@angular/common/http";
 @Injectable({
     providedIn: 'root',
 })
-export class ShipmentService implements OnInit {
+export class ShipmentService {
 
     private url = 'http://localhost:8080';
 
-    constructor(private httpClient: HttpClient) { }
-
-    ngOnInit(): void {
-        this.httpClient
-            .get(this.url + '/shipments')
-            .subscribe(
-                (response) => {
-                    this.shipments = response as Shipment[];
-                },
-                (error) => {
-                    // Todo
-                    console.log('error - ', error);
-                }
-            );
-    }
-
     private shipments: Shipment[] = [];
 
-    getShipments(): Shipment[] {
+    constructor(private httpClient: HttpClient) { }
+
+    fetchShipments(): Promise<Shipment[]> {
+        return this.httpClient
+            .get<Shipment[]>(this.url + '/shipments').toPromise();
+    }
+
+    async getShipments(): Promise<Shipment[]> {
+        this.shipments = await this.fetchShipments();
         return this.shipments;
     }
 
