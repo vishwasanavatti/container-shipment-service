@@ -3,7 +3,9 @@ package com.kn.containershipment.service
 import com.kn.containershipment.model.Shipment
 import com.kn.containershipment.model.TemperatureRange
 import com.kn.containershipment.model.TransportType
+import org.springframework.stereotype.Service
 
+@Service
 class ShipmentService {
     fun getShipments() : Set<Shipment> {
         val shipments: MutableSet<Shipment> = mutableSetOf()

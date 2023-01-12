@@ -11,4 +11,9 @@ class TemplateService(val templateRepository: TemplateRepository) {
         val templates = templateRepository.findAll()
         return templates.map { it }.toList()
     }
+
+    fun getTemplateById(id : Long): PlanTemplate {
+        val templates = templateRepository.findById(id)
+        return templates.orElse(null)
+    }
 }

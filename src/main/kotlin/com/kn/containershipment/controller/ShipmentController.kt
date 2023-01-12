@@ -8,9 +8,10 @@ import com.kn.containershipment.service.ExecutionPlanService
 import com.kn.containershipment.service.ShipmentService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import java.lang.IllegalArgumentException
 
 @RestController
-class ShipmentController {
+class ShipmentController(val executionPlanService: ExecutionPlanService) {
 
 //    @GetMapping("/shipments")
 //    fun getShipments(rabbitReceiver: RabbitReceiver): MutableSet<Shipment> {
@@ -24,8 +25,18 @@ class ShipmentController {
 
     @PostMapping("/shipment-plan")
     @ResponseStatus(HttpStatus.CREATED)
-    fun createExecutePlan(@RequestBody shipmentPlan: ShipmentPlan, executionPlanService: ExecutionPlanService): List<ExecutionPlan>  {
-        return executionPlanService.createPlan(shipmentPlan);
+    fun createExecutePlan(@RequestBody shipmentPlan: ShipmentPlan): ExecutionPlan {
+        val executionPlan : ExecutionPlan
+        try {
+            executionPlan =  executionPlanService.createPlan(shipmentPlan)
+        } catch (e: IllegalArgumentException) {
+            // Check how to throw Bad Request Exception
+            throw IllegalArgumentException("Error - $e")
+        } catch (e : Exception) {
+            throw InternalError("Something went wrong - $e")
+        }
+
+        return executionPlan
     }
 
 }
